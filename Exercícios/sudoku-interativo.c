@@ -41,29 +41,35 @@ int main() {
         {3, 0, 5, 8, 1, 7, 0, 2, 4},
         {8, 7, 9, 6, 4, 0, 1, 5, 3}
     };
-
+    
+    printf("\n*** BEM VINDO AO SUDOKU ***\n");
     for (int rodada = 0; rodada < JOGADAS; rodada++) {
+        printf("\n-------------------------\n");
         for (int i = 0; i < 9; i++) {
             printf("| ");
             for (int j = 0; j < 9; j++) {
                 printf(sudoku[i][j] == 0 ? "* " : "%d ", sudoku[i][j]);
+                if ((j+1) % 3 == 0 && j+1 < 9) printf("| ");
             }
             printf("|\n");
+            if ((i+1) % 3 == 0) printf("-------------------------\n");
         }
-        printf("\n========== Jogada %d ==========\n\n", rodada);
+        printf("\n========== Jogada %d ==========\n\n", rodada+1);
 
-        printf("Digite a linha [1-9]: ");
-        scanf("%d", &x);
-        printf("Digite a coluna [1-9]: ");
-        scanf("%d", &y);
-        printf("Digite o valor [1-9]: ");
-        scanf("%d", &k);
+        do {
+            printf("Digite uma linha válida [1-9]: ");
+            scanf("%d", &x);
+            printf("Digite uma coluna válida [1-9]: ");
+            scanf("%d", &y);
+            printf("Digite um valor válido [1-9]: ");
+            scanf("%d", &k);
+        } while (sudoku[x-1][y-1] != 0 || k > 9 || k < 1);
 
         sudoku[--x][--y] = k;
     }
     
     printf("\n\n");
-    printf(verificaSudoku(sudoku) ? "PARABENS" : "PERDEU");
+    printf(verificaSudoku(sudoku) ? "*** PARABENS, VOCE GANHOU ***" : "*** QUE PENA, VOCE PERDEU ***");
 
     return 0;
 }
