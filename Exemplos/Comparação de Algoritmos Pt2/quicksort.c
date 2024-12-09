@@ -39,7 +39,7 @@ int main(){
             vetor[a] = rand() % TAM;
 
         t = clock();
-        mergesort(0, TAM, vetor);
+        quicksort(0, TAM, vetor);
         t = clock() - t;
 
         printf("Tamanho: %d - Tempo de execucao: %lf ms\n", TAM, ((double)t)/((CLOCKS_PER_SEC/1000)));
