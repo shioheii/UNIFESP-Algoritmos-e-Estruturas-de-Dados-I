@@ -6,8 +6,6 @@ int const TAM_MAX = 400000;
 int const VARIATION = 20000;
 int const SECONDS = 1000;
 
-// VISME.CO & INFOGRAM para gráficos
-
 // START INSERTION SORT
 void insertionSort(int n, int v[]) {
     int i, j, x;
