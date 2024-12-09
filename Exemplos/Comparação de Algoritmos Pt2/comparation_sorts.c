@@ -4,6 +4,7 @@
 
 int const TAM_MAX = 400000;
 int const VARIATION = 20000;
+int const SECONDS = 1000;
 
 // VISME.CO & INFOGRAM para gráficos
 
@@ -100,10 +101,9 @@ int main(){
         quickSortExecutionTime = clock() - quickSortExecutionTime;
 
         printf("Tamanho: %d\n", TAM);
-        printf("[insertionSortExecutionTime] => %lf ms\n", ((double)insertionSortExecutionTime)/((CLOCKS_PER_SEC/1000)));
-        printf("[mergeSortExecutionTime]     => %lf ms\n", ((double)mergeSortExecutionTime)/((CLOCKS_PER_SEC/1000)));
-        printf("[quickSortExecutionTime]     => %lf ms\n", ((double)quickSortExecutionTime)/((CLOCKS_PER_SEC/1000)));
-        printf("\n********************\n\n");
+        printf("Insertion Sort => %lf ms\n", ((double)insertionSortExecutionTime)/((CLOCKS_PER_SEC/SECONDS)));
+        printf("Merge Sort     => %lf ms\n", ((double)mergeSortExecutionTime)/((CLOCKS_PER_SEC/SECONDS)));
+        printf("Quick Sort     => %lf ms\n\n", ((double)quickSortExecutionTime)/((CLOCKS_PER_SEC/SECONDS)));
     }
 
     return 0;
