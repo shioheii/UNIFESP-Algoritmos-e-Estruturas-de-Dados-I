@@ -181,14 +181,14 @@ int main() {
         if (queueMatch != totalRemoveds && stackMatch != totalRemoveds && heapMatch != totalRemoveds)
             structUsed = 5;
 
-        if ((queueMatch == totalRemoveds && stackMatch == totalRemoveds) ||
-            (queueMatch == totalRemoveds && heapMatch == totalRemoveds) ||
-            (stackMatch == totalRemoveds && heapMatch == totalRemoveds))
+        else if ((queueMatch == totalRemoveds && stackMatch == totalRemoveds) ||
+                  (queueMatch == totalRemoveds && heapMatch == totalRemoveds) ||
+                  (stackMatch == totalRemoveds && heapMatch == totalRemoveds))
             structUsed = 4;
 
-        if (queueMatch == totalRemoveds) structUsed = 1;
-        if (stackMatch == totalRemoveds) structUsed = 2;
-        if (heapMatch == totalRemoveds) structUsed = 3;
+        else if (queueMatch == totalRemoveds) structUsed = 1;
+        else if (stackMatch == totalRemoveds) structUsed = 2;
+        else                                  structUsed = 3;
 
         insertQueue(structUsed, &resultsQueueInit, &resultsQueueEnd);
     }
