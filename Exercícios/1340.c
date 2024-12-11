@@ -69,80 +69,31 @@ void insertStack(int v, cell *p) {
 /*** END STACK METHODS ***/
 
 /*** START HEAP MAX STRUCT AND METHODS ***/
-typedef struct heapNode {
-    int value;
-    struct heapNode *left;
-    struct heapNode *right;
-} heapNode;
-
-void swap(heapNode *a, heapNode *b) {
-    int temp = a->value;
-    a->value = b->value;
-    b->value = temp;
-}
-
-void downheap(heapNode *root) {
-    if (root == NULL) return;
-    heapNode *largest = root;
-    heapNode *left = root->left;
-    heapNode *right = root->right;
-    if (left != NULL && left->value > largest->value) {
-        largest = left;
-    }
-    if (right != NULL && right->value > largest->value) {
-        largest = right;
-    }
-    if (largest != root) {
-        swap(root, largest);
-        downheap(largest); 
+void SacodeHeap(int m, int v[]) {
+    int t, f = 1;
+    while (f < m) {
+        if (f < m-1 && v[f-1] < v[f]) ++f;
+        if (v[f/2-1] >= v[f-1]) break;
+        t = v[f/2-1]; v[f/2-1] = v[f-1]; v[f-1] = t;
+        f *= 2;
     }
 }
 
-void upheap(heapNode *root) {
-    if (root == NULL || root->left == NULL) return;
-    heapNode *largest = root;
-    heapNode *left = root->left;
-    if (left != NULL && left->value > largest->value) {
-        largest = left;
-    }
-    if (largest != root) {
-        swap(root, largest);
-        upheap(largest);
-    }
+int RemoveMaxHeap(int *n, int v[]) {
+    if (*n <= 0) return -1; // Heap vazio
+
+    int max = v[0]; // Raiz do heap (maior valor)
+    v[0] = v[--(*n)]; // Mover o último elemento para a raiz
+    SacodeHeap(*n, v); // Reordenar o heap
+    return max;
 }
 
-void insertHeapMax(heapNode **root, int value) {
-    heapNode *newNode = (heapNode*) malloc(sizeof(heapNode));
-    newNode->value = value;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    if (*root == NULL) {
-        *root = newNode;
-    } else {
-        heapNode *lastNode = *root;
-        while (lastNode->left != NULL && lastNode->right != NULL) {
-            if (lastNode->left != NULL) {
-                lastNode = lastNode->left;
-            }
-        }
-        if (lastNode->left == NULL) {
-            lastNode->left = newNode;
-        } else {
-            lastNode->right = newNode;
-        }
-        upheap(newNode);
+void InsereEmHeap(int m, int v[]) {
+    int f = m;
+    while (f > 0 && v[f/2-1] < v[f-1]) {
+        int t = v[f/2-1]; v[f/2-1] = v[f-1]; v[f-1] = t;
+        f = f/2;
     }
-}
-
-int popHeapMax(heapNode **root) {
-    if (*root == NULL) return -1;
-    int x = (*root)->value;
-    heapNode *lastNode = *root;
-    heapNode *largest = *root;
-    swap(*root, lastNode);
-    free(lastNode);
-    downheap(largest);
-    return x;
 }
 /*** END HEAP MAX STRUCT AND METHODS ***/
 
@@ -150,8 +101,7 @@ int main() {
     cell *s, *t, *resultsQueueInit, *resultsQueueEnd;
     s = t = resultsQueueInit = resultsQueueEnd = NULL;
     cell *stack = (cell*)malloc(sizeof(cell));
-    // heapNode *heapMaxRoot = (heapNode*)malloc(sizeof(heapNode));
-
+    
     char operationAndValue[MAX_CHAR_LENGTH];
     int operator, value, n, structUsed = 0;
 
@@ -159,6 +109,7 @@ int main() {
         getchar();
         
         int totalRemoveds = 0, queueMatch = 0, stackMatch = 0, heapMatch = 0;
+        int heap[n], c = 0;
 
         for (int i = 0; i < n; i++) {
             fgets(operationAndValue, MAX_CHAR_LENGTH, stdin);
@@ -168,13 +119,14 @@ int main() {
             if (operator == 1) {
                 insertQueue(value, &s, &t);
                 insertStack(value, stack);
-                // insertHeapMax(&heapMaxRoot, value);
+                heap[c++] = value;
+                InsereEmHeap(c, heap);
             } else {
                 totalRemoveds++;
 
                 if (popQueue(&s, &t) == value) queueMatch++;
                 if (popStack(stack) == value) stackMatch++;
-                // if (popHeapMax(&heapMaxRoot) == value) heapMatch++;
+                if (RemoveMaxHeap(&c, heap) == value) heapMatch++;
             }
         }
 
