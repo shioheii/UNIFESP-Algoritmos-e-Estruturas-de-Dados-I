@@ -1,9 +1,9 @@
-/*********************************************************************************
+/************************************************************************************
  * UNIFESP - Universidade Federal de São Paulo
  * Nome: Bruno Shiohei Kinoshita do Nascimento
  * RA: 176475
- * Observação: Resolvido utilizando estrutura de dados Listas, Filas e Quicksort
-*********************************************************************************/
+ * Observação: Resolvido utilizando estrutura de dados Listas, Filas e InsertionSort
+************************************************************************************/
 
 #include<stdio.h>
 #include<stdlib.h>
