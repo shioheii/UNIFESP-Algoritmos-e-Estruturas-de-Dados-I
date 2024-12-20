@@ -10,8 +10,7 @@
 #include<string.h>
 #include<ctype.h>
 
-const int MAX_CHAR_LENGTH = 110;
-const int MAX_CHAR_INPUT_LENGTH = 55;
+const int MAX_CHAR_LENGTH = 51;
 
 typedef struct cell {
     char *value;
