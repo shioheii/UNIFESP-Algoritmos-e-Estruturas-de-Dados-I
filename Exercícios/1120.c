@@ -36,25 +36,25 @@ void printResults(cell *first) {
 }
 
 void string_process(char D, char *N, char *resultado) {
-    char result[102] = "";
+    char res[MAX_CHAR_LENGTH];
     int result_index = 0;
 
     for (int i = 0; N[i] != '\0'; i++) {
         if (N[i] != D) {
-            result[result_index++] = N[i];
+            res[result_index++] = N[i];
         }
     }
 
-    result[result_index] = '\0';
+    res[result_index] = '\0';
 
     if (result_index == 0) {
         strcpy(resultado, "0");
     } else {
         int i = 0;
-        while (result[i] == '0') i++;
+        while (res[i] == '0') i++;
 
-        if (result[i] == '\0') strcpy(resultado, "0");
-        else                   strcpy(resultado, result + i);
+        if (res[i] == '\0') strcpy(resultado, "0");
+        else                strcpy(resultado, res + i);
     }
 }
 
