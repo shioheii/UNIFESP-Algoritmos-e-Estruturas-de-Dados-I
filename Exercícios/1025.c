@@ -33,7 +33,7 @@ void quicksort(int p, int r, int v[]) {
 int searchMarmore(int ms[], int consult, int t) {
     int i;
 
-    for (i = 0; i < t; i++) {
+    for (i = 0; i < t && ms[i] <= consult; i++) {
         if (ms[i] == consult) return i + 1;
     }
 
