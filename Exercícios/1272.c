@@ -20,8 +20,7 @@ void insert(char *text, cell **es, cell **et) {
     cell *newCell;
     newCell = (cell*)malloc(sizeof(cell));
     newCell->value = (char*)malloc(MAX_CHAR_LENGTH * sizeof(char));
-    if (text[0] == '\0') newCell->value[0] = '\0';
-    else strcpy(newCell->value, text);
+    strcpy(newCell->value, text);
     newCell->next = NULL;
     if (*et == NULL) *et = *es = newCell;
     else {
