@@ -1,9 +1,9 @@
-/***************************************************************************************
+/***********************************************************************
  * UNIFESP - Universidade Federal de São Paulo
  * Nome: Bruno Shiohei Kinoshita do Nascimento
  * RA: 176475
- * Observação: Resolvido utilizando a estrutura de dados Fila e ordenação com Bubblesort
-****************************************************************************************/
+ * Observação: Resolvido utilizando o método de ordenação com Quicksort
+************************************************************************/
 
 #include<stdio.h>
 #include<stdlib.h>
