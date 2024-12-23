@@ -91,9 +91,7 @@ void findWinner(cell *head) {
         head = head->next;
     }
 
-    if (winner != NULL) {
-        printf("\nAmigo do Habay:\n%s\n", winner->name);
-    }
+    printf("\nAmigo do Habay:\n%s\n", winner->name);
 }
 
 int main() {
