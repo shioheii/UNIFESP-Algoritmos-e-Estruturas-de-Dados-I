@@ -32,11 +32,9 @@ void insert(char *key, int value, cell **es, cell **et) {
 }
 
 int search(char *key, cell *first) {
-    while (first != NULL) {
-        if (strcmp(first->key, key) == 0) {
-            return first->value;
-        }
-        first = first->next;
+    cell *p;
+    for (p = first; p != NULL; p = p->next) {
+        if (strcmp(p->key, key) == 0) return p->value;
     }
     return 0;
 }
@@ -56,7 +54,7 @@ int main() {
         }
 
         for (int i = 0; i < N; i++) {
-            salary = 0.0;
+            salary = 0;
 
             while (1) {
                 scanf("%s", word);
