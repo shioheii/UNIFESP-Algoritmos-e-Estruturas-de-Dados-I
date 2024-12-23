@@ -70,25 +70,23 @@ void sort(cell *lst) {
 }
 
 void printList(cell *head, const char *choice) {
-    while (head != NULL) {
-        if (strcmp(head->choice, choice) == 0) {
-            printf("%s\n", head->name);
-        }
-        head = head->next;
+    cell *p;
+    for (p = head; p != NULL; p = p->next) {
+        if (strcmp(p->choice, choice) == 0)
+            printf("%s\n", p->name);
     }
 }
 
 void findWinner(cell *head) {
-    cell *winner = NULL;
-
-    while (head != NULL) {
-        if (strcmp(head->choice, "YES") == 0) {
-            if (winner == NULL || strlen(head->name) > strlen(winner->name) || 
-                (strlen(head->name) == strlen(winner->name) && head->order < winner->order)) {
-                winner = head;
+    cell *p, *winner = NULL;
+    
+    for (p = head; p != NULL; p = p->next) {
+        if (strcmp(p->choice, "YES") == 0) {
+            if (winner == NULL || strlen(p->name) > strlen(winner->name) || 
+                (strlen(p->name) == strlen(winner->name) && p->order < winner->order)) {
+                winner = p;
             }
         }
-        head = head->next;
     }
 
     printf("\nAmigo do Habay:\n%s\n", winner->name);
