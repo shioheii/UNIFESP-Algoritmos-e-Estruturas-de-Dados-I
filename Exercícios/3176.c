@@ -48,15 +48,15 @@ void sort(cell *lst) {
 
 
 void printTeams(cell *first, int N) {
-    int teamSize = N / 3;
+    int numberOfTeams = N / 3;
     cell *leaders = first;
     cell *deliverers = first;
     cell *pilots = first;
 
-    for (int i = 0; i < teamSize; i++) deliverers = deliverers->next;
-    for (int i = 0; i < 2 * teamSize; i++) pilots = pilots->next;
+    for (int i = 0; i < numberOfTeams; i++) deliverers = deliverers->next;
+    for (int i = 0; i < 2 * numberOfTeams; i++) pilots = pilots->next;
 
-    for (int i = 1; i <= teamSize; i++) {
+    for (int i = 1; i <= numberOfTeams; i++) {
         printf("Time %d\n", i);
         printf("%s %d\n", leaders->name, leaders->age);
         leaders = leaders->next;
